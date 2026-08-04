@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoe Zhou — People Business Partner · Executive Coach</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --accent: #58a6ff;
+            --green: #3fb950;
+            --purple: #bc8cff;
+            --orange: #d2991d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* ---- Header ---- */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .header-text h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .header-text .tagline {
+            font-size: 15px;
+            color: var(--accent);
+            margin-top: 2px;
+        }
+        .header-text .meta {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        /* ---- Stats Row ---- */
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+        .stat {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 20px;
+            min-width: 120px;
+            text-align: center;
+            flex: 1;
+        }
+        .stat .num {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat .label {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* ---- Sections ---- */
+        .section { margin-bottom: 36px; }
+        .section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2 .icon { font-size: 18px; }
+
+        .section p, .section li {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        /* ---- Bio ---- */
+        .bio p { margin-bottom: 12px; }
+
+        /* ---- Timeline ---- */
+        .timeline { list-style: none; }
+        .timeline li {
+            position: relative;
+            padding-left: 20px;
+            padding-bottom: 20px;
+            border-left: 1px solid var(--border);
+        }
+        .timeline li:last-child { padding-bottom: 0; border-left-color: transparent; }
+        .timeline li::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .timeline .role {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .timeline .company {
+            color: var(--accent);
+            font-size: 13px;
+        }
+        .timeline .date {
+            color: var(--muted);
+            font-size: 12px;
+        }
+        .timeline .desc {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* ---- Badges ---- */
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+        .badge.green  { color: var(--green);  border-color: rgba(63,185,80,0.3);  background: rgba(63,185,80,0.08); }
+        .badge.blue   { color: var(--accent);  border-color: rgba(88,166,255,0.3); background: rgba(88,166,255,0.08); }
+        .badge.purple { color: var(--purple);  border-color: rgba(188,140,255,0.3); background: rgba(188,140,255,0.08); }
+        .badge.orange { color: var(--orange);  border-color: rgba(210,153,29,0.3);  background: rgba(210,153,29,0.08); }
+
+        /* ---- Values Grid ---- */
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .value-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .value-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .value-card p {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* ---- Contact ---- */
+        .contact {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .contact a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            transition: border-color 0.2s;
+        }
+        .contact a:hover { border-color: var(--accent); }
+
+        /* ---- Footer ---- */
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 48px;
+            font-style: italic;
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 500px) {
+            .header { flex-direction: column; align-items: flex-start; }
+            .stats { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <img class="avatar" src="avatar.jpg" alt="Zoe Zhou">
+        <div class="header-text">
+            <h1>Zoe Zhou</h1>
+            <div class="tagline">People Business Partner · Executive Coach (ICF PCC)</div>
+            <div class="meta">🌏 APAC (GMT+8) &nbsp;·&nbsp; ✉️ zoe-zhou@outlook.com</div>
+        </div>
+    </div>
+
+    <!-- ===== STATS ===== -->
+    <div class="stats">
+        <div class="stat">
+            <div class="num">15+</div>
+            <div class="label">Years in People &amp; HR</div>
+        </div>
+        <div class="stat">
+            <div class="num">800+</div>
+            <div class="label">Executive Coaching Hours</div>
+        </div>
+        <div class="stat">
+            <div class="num">4</div>
+            <div class="label">GTM Orgs Partnered</div>
+        </div>
+        <div class="stat">
+            <div class="num">3</div>
+            <div class="label">0-to-1 HR Builds</div>
+        </div>
+    </div>
+
+    <!-- ===== BIO ===== -->
+    <div class="section">
+        <h2><span class="icon">💡</span> About Me</h2>
+        <div class="bio">
+            <p>
+                I help <strong>high-growth technology companies</strong> build People practices that actually enable revenue — not slow it down. 15 years embedded in GTM and commercial teams, from AI unicorns to public cloud platforms.
+            </p>
+            <p>
+                I partner with Sales VPs, BU Heads, and go-to-market leaders on <strong>org design, manager development, and scaling teams</strong> without the bureaucracy. As an ICF PCC-certified coach, I've delivered 800+ hours of executive coaching to Directors and VPs across EMEA, AMER, and APAC.
+            </p>
+            <p>
+                I believe in <strong>Kaizen</strong> — continuous, iterative improvement over grand overhauls. Build just enough process. Trust people. Move fast.
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== TIMELINE ===== -->
+    <div class="section">
+        <h2><span class="icon">📋</span> Where I've Worked</h2>
+        <ul class="timeline">
+            <li>
+                <div class="role">Founder &amp; Principal Consultant</div>
+                <div class="company">HG Center — Global HR &amp; Leadership Advisory</div>
+                <div class="date">Oct 2023 – Present</div>
+                <div class="desc">Embedded PBP + executive coaching for Series A–C startups. Built lean People infrastructure for distributed GTM teams.</div>
+            </li>
+            <li>
+                <div class="role">HR Director, People Operations &amp; Strategy</div>
+                <div class="company">HAOMO.AI (AI Unicorn, Autonomous Driving)</div>
+                <div class="date">Jun 2021 – Sep 2023</div>
+                <div class="desc">Led HRBP team across 5 BUs (GTM + Engineering). 3x headcount growth. Built 30+ leader management bench.</div>
+            </li>
+            <li>
+                <div class="role">Senior HRBP, Key Account Sales</div>
+                <div class="company">Alibaba Cloud (NYSE: BABA)</div>
+                <div class="date">Jun 2020 – Jun 2021</div>
+                <div class="desc">Embedded in Automotive &amp; Manufacturing enterprise sales org. Pipeline reviews, territory planning, comp-to-revenue alignment.</div>
+            </li>
+            <li>
+                <div class="role">HRBP Manager, Business Operations</div>
+                <div class="company">DiDi (NYSE: DIDI)</div>
+                <div class="date">Oct 2017 – Jun 2020</div>
+                <div class="desc">Complex ER, organizational restructuring, and performance governance during periods of intense business transformation.</div>
+            </li>
+            <li>
+                <div class="role">Talent Development Manager, Global Expansion</div>
+                <div class="company">LeTV (SHE: 300104)</div>
+                <div class="date">Aug 2015 – Oct 2017</div>
+                <div class="desc">Built HR infrastructure for international GTM entities across APAC, AMER, and EMEA markets.</div>
+            </li>
+            <li>
+                <div class="role">OD Consultant, M&amp;A Integration</div>
+                <div class="company">Lenovo (HKEX: 0992)</div>
+                <div class="date">Jul 2011 – Aug 2015</div>
+                <div class="desc">Culture Officer for Motorola acquisition. Integrated two global GTM organizations across 3 continents.</div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ===== CREDENTIALS ===== -->
+    <div class="section">
+        <h2><span class="icon">🎓</span> Credentials</h2>
+        <div class="badges">
+            <span class="badge green">SPHR (HRCI)</span>
+            <span class="badge green">ICF PCC</span>
+            <span class="badge blue">EMBA, Quantic</span>
+            <span class="badge blue">M.Econ, Peking University</span>
+            <span class="badge purple">Harvard Business School — Leadership Certificate</span>
+            <span class="badge orange">Bilingual EN/CN (TEM-8)</span>
+        </div>
+    </div>
+
+    <!-- ===== VALUES ===== -->
+    <div class="section">
+        <h2><span class="icon">🧭</span> How I Work</h2>
+        <div class="values">
+            <div class="value-card">
+                <h3>🎯 Egoless</h3>
+                <p>Mission-driven. Work for the good of the team, not personal credit.</p>
+            </div>
+            <div class="value-card">
+                <h3>🔄 Kaizen Mindset</h3>
+                <p>Iterate continuously. Small improvements compound into meaningful change.</p>
+            </div>
+            <div class="value-card">
+                <h3>🔍 Truth Seeking</h3>
+                <p>Intellectually honest. Recognize biases. Make decisions based on data, not politics.</p>
+            </div>
+            <div class="value-card">
+                <h3>🔋 Batteries Included</h3>
+                <p>High ownership. Intrinsically motivated. I care about the quality of what I ship.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <div class="section">
+        <h2><span class="icon">📫</span> Let's Connect</h2>
+        <div class="contact">
+            <a href="mailto:zoe-zhou@outlook.com">✉️ Email</a>
+            <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener">🔗 LinkedIn</a>
+            <a href="https://github.com/your-username" target="_blank" rel="noopener">💻 GitHub</a>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        "Build just enough process to enable growth. No more."
+    </div>
+
+</body>
+</html>
